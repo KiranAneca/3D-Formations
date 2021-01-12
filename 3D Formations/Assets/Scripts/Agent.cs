@@ -12,8 +12,7 @@ public class Agent : MonoBehaviour
 
     Vector3 TargetLocation;
     Vector3 OffSetToLeader;
-    float MovementSpeed;
-
+    float MaxMovementSpeed;
 
     private void Awake()
     {
@@ -24,8 +23,6 @@ public class Agent : MonoBehaviour
     {
         NavAgent.destination = TargetLocation;
     }
-
-
 
     // Getters and setters
     public void SetPack(GameObject pack)
@@ -40,9 +37,16 @@ public class Agent : MonoBehaviour
     {
         TargetLocation = location;
     }
-    public void SetMovementSpeed(float speed)
+    public void SetMaxMovementSpeed(float speed)
     {
-        MovementSpeed = speed;
+        MaxMovementSpeed = speed;
+    }
+    public float GetMaxMovementSpeed()
+    {
+        return MaxMovementSpeed;
+    }
+    public void SetCurrentMovementSpeed(float speed)
+    {
         NavAgent.speed = speed;
     }
     public void SettOffset(Vector3 offset)
