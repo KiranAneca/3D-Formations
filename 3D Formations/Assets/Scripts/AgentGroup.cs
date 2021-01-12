@@ -9,7 +9,8 @@ public class AgentGroup : MonoBehaviour
     {
         VShape = 0,
         Square = 1,
-        Custom = 2
+        Random = 2,
+        Custom = 3
     }
     public enum mode
     {
@@ -168,6 +169,13 @@ public class AgentGroup : MonoBehaviour
                         Vector3 offset = new Vector3(distance - i/4, 0, -distance);
                         this.transform.GetChild(i).GetComponent<Agent>().SettOffset(offset);
                     }
+                }
+                break;
+            case formation.Random:
+                for (int i = 1; i < this.transform.childCount; ++i)
+                {
+                    Vector3 offset = new Vector3(Random.Range(-8f, 8f), 0, Random.Range(-8f, 8f));
+                    this.transform.GetChild(i).GetComponent<Agent>().SettOffset(offset);
                 }
                 break;
             default:
